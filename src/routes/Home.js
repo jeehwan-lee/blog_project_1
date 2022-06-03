@@ -1,18 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Blog from '../components/Blog'
 import Header from '../components/Header'
 import SearchBar from '../components/SearchBar'
+import { dbService } from '../fbase'
 import './styles/Home.css'
 
 function Home() {
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    dbService.collection('posts').onSnapshot((snapshot) => {
+      const newArray = snapshot.docs.map((document) => document.data());
+      setPosts(newArray);
+    });
+
+    console.log(posts);
+
+  }, []);
+
   return (
     <div className='home'>
         <Header/>
         <SearchBar/>
         <div className='blog-container'>
-            <Blog/>
-            <Blog/>
-            <Blog/>
+          {posts.map((post) => (
+            <Blog postObj={post} />
+          ))}
         </div>
     </div>
   )
