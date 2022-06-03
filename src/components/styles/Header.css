@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300;400;700&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300;400;700&family=Shadows+Into+Light&display=swap');
+
+.header {
+    font-size: 30px;
+    position: relative;
+    border-bottom: 1px solid;
+    border-color: #b0c4de;
+    padding-bottom: 65px;
+}
+
+.header h3 {
+    font-family: 'Indie Flower', cursive;
+    color: black;
+    position: absolute;
+    left: 5px;
+}
+
+.header-icon {
+    position: absolute;
+    right: 5px;
+    top:15px
+}
+
+.header-faHouse {
+    margin-right: 30px;
+}
+
+.header-faSquarePlus {
+    margin-right: 30px;
+    font-size: 35px;
+}
+
