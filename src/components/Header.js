@@ -3,6 +3,7 @@ import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import './styles/Header.css'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
@@ -10,10 +11,13 @@ function Header() {
         <h3>My Log</h3>
 
         <div className='header-icon'>
-            <FontAwesomeIcon icon={faHouse} className='header-faHouse'/>
-            <FontAwesomeIcon icon={faSquarePlus} className='header-faSquarePlus'/>
+            <Link to='/' style={{color:'black'}}><FontAwesomeIcon icon={faHouse} className='header-faHouse'/></Link>
+            <Link to='/post' style={{color:'black'}}><FontAwesomeIcon icon={faSquarePlus} className='header-faSquarePlus'/></Link>
 
-            {/* 로그인 여부에 따라 아래구문은 faUserPlus 또는 프로필 사진으로 2항 연산자로 구현 */}
+            {/* 
+              1. 로그인 여부에 따라 아래구문은 faUserPlus 또는 프로필 사진으로 2항 연산자로 구현 
+              2. 로그인 방법은 modal로 구현 
+            */}
             <FontAwesomeIcon icon={faUserPlus} className='header-faUserPlus'/>
         </div>
     </div>

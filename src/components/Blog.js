@@ -20,7 +20,7 @@ function Blog({postObj}) {
             </div>
           </div>
         </div>
-        <Link className='blog-link' to={`/blog/${postObj.id}`}>blog</Link>
+        <Link className='blog-link' to={`/blog/${postObj.id}`}>detail</Link>
       </footer>
     
     </div>
