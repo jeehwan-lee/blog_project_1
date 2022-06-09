@@ -7,6 +7,7 @@ import Post from './routes/Post';
 import { useEffect, useState } from 'react';
 import Login from './routes/Login';
 import Profile from './routes/Profile';
+import Header from './components/Header';
 
 function App() {
 
@@ -25,8 +26,9 @@ function App() {
   return (
     <div className="container">
       <BrowserRouter>
+        <Header isLoggedIn={isLoggedIn}/>
         <Routes>
-          <Route path="/" element={<Home isLoggedIn={isLoggedIn}/>} />
+          <Route path="/" element={<Home/>} />
           <Route path="blog/:id" element={<Detail/>} />
           <Route path="post" element={<Post/>} />
           <Route path="login" element={<Login/>} />

@@ -23,7 +23,7 @@ function Home({isLoggedIn}) {
 
   return (
     <div className='home'>
-        <Header isLoggedIn={isLoggedIn}/>
+        {/*<Header isLoggedIn={isLoggedIn}/> */}
         <SearchBar/>
         <div className='blog-container'>
           {posts.map((post) => (

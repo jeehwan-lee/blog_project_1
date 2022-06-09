@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 import { authService} from '../fbase';
 
 function Login() {
@@ -32,14 +33,13 @@ function Login() {
 
   return (
     <div>
+        {/*<Header/>*/}
         <form onSubmit={onSubmit}>
             <input type="email" name="email" placeholder='Email' required value={email} onChange={onChange} />
             <input type="password" name="password" placeholder='Password' required value={password} onChange={onChange}/>
             <input type="submit" value="Log In" />
         </form>
 
-        <div>
-        </div>
     </div>
   )
 }

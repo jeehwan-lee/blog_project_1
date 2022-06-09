@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 import { authService } from '../fbase'
 
 function Profile() {
@@ -14,8 +15,9 @@ function Profile() {
 
   return (
     <div>
+        {/*<Header/>*/}
         Profile
-        <button onClick={onLogOut}>Log Out</button>
+      <button onClick={onLogOut}>Log Out</button>
 
     </div>
   )

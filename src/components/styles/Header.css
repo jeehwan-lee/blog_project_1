@@ -16,24 +16,35 @@
     left: 5px;
 }
 
-.header-icon {
-    position: absolute;
-    right: 5px;
-    top:15px
-}
-
 .header-faHouse {
-    margin-right: 30px;
+    position: absolute;
+    right: 150px;
+    top:17px
 }
 
 .header-faSquarePlus {
-    margin-right: 30px;
+    position: absolute;
+    right: 80px;
+    top:15px;
     font-size: 35px;
 }
 
+.header-faUserPlus {
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    right: 10px;
+    top:15px;
+    object-fit: fill;
+ }
+  
 .profileImage {
     height: 35px;
     width: 35px;
+    position: absolute;
+    right: 10px;
+    top:15px;
+    object-fit: fill;
     border-radius: 50%;
 }
 
