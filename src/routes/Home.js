@@ -5,7 +5,9 @@ import SearchBar from '../components/SearchBar'
 import { dbService } from '../fbase'
 import './styles/Home.css'
 
-function Home() {
+function Home({isLoggedIn}) {
+
+  console.log(isLoggedIn);
 
   const [posts, setPosts] = useState([]);
 
@@ -21,7 +23,7 @@ function Home() {
 
   return (
     <div className='home'>
-        <Header/>
+        <Header isLoggedIn={isLoggedIn}/>
         <SearchBar/>
         <div className='blog-container'>
           {posts.map((post) => (
