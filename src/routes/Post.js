@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
-import { dbService } from '../fbase';
+import { dbService, storageService } from '../fbase';
+import {v4 as uuidv4} from "uuid";
+import { getDownloadURL, ref, uploadString} from "firebase/storage";
 import Header from '../components/Header'
 
-function Post() {
+function Post({userObj}) {
 
   const [dateString, setDateString] = useState("");
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
   const [post, setPost] = useState("");
+  const [attachment, setAttachment] =useState("");
 
   const calDate = () => {
     
@@ -20,11 +23,23 @@ function Post() {
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    let url = "";
+
+    if(attachment !== "") { 
+      const attachmentRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+      const response = await uploadString(attachmentRef, attachment, "data_url");
+      console.log(response);
+
+      url = await getDownloadURL(response.ref);
+
+    }
+
     await dbService.collection("posts").add({
       createdAt : dateString,
       description : post,
       tag : tag,
       title : title,
+      image : url,
 
     });
 
@@ -49,6 +64,22 @@ function Post() {
       setTag(event.target.value);
     }
   }
+
+  const onFileChange = (event) => {
+    const {
+      target : {files},
+    } = event;
+
+    const theFile = files[0];
+    const reader = new FileReader();
+    reader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget : {result},
+      } = finishedEvent;
+      setAttachment(result);
+    };
+    reader.readAsDataURL(theFile);
+  }
   return (
     <div>
         {/*<Header/>*/}
@@ -57,6 +88,7 @@ function Post() {
         <input name="title" value={title} onChange={onChange} type = "text" />
         <input name="tag" value={tag} onChange={onChange} type="text" />
         <input name ="post" value={post} onChange={onChange} type="text"/>
+        <input type="file" accept='image/*' onChange={onFileChange} />
         <input type="submit" value="post" />
       </form>
     </div>
