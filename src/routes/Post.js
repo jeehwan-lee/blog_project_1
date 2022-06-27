@@ -23,6 +23,9 @@ function Post({userObj}) {
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    var query = dbService.collection("users").where("userId", "==", userObj.uid);
+    console.log(query);
+
     let url = "";
 
     if(attachment !== "") { 

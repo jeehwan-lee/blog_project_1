@@ -32,7 +32,7 @@ function App() {
           <Route path="blog/:id" element={<Detail/>} />
           <Route path="post" element={<Post userObj={isLoggedIn}/>} />
           <Route path="login" element={<Login/>} />
-          <Route path="profile" element={<Profile/>} />
+          <Route path="profile" element={<Profile userObj={isLoggedIn}/>} />
         </Routes>
       </BrowserRouter>
 
