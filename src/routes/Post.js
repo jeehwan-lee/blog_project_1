@@ -11,6 +11,7 @@ function Post({userObj}) {
   const [tag, setTag] = useState("");
   const [post, setPost] = useState("");
   const [attachment, setAttachment] =useState("");
+  const [profileImage, setProfileImage] = useState("");
 
   const calDate = () => {
     
@@ -23,8 +24,15 @@ function Post({userObj}) {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    var query = dbService.collection("users").where("userId", "==", userObj.uid);
-    console.log(query);
+    let profileurl = "";
+
+    var query = dbService.collection("users").where("userId", "==", userObj.uid).get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        //console.log(doc.data().profileImage);
+       profileurl = doc.data().profileImage;
+      });
+    });
 
     let url = "";
 
@@ -37,13 +45,14 @@ function Post({userObj}) {
 
     }
 
+    // profile Image를 바꿨을때 게시글의 프로필 사진도 같이 변경되도록 수정해야함
     await dbService.collection("posts").add({
       createdAt : dateString,
       description : post,
       tag : tag,
       title : title,
       image : url,
-
+      creatorIcon : profileurl,
     });
 
     setDateString("");
