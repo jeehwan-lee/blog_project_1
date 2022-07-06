@@ -25,12 +25,14 @@ function Post({userObj}) {
     event.preventDefault();
 
     let profileurl = "";
+    let profileuser = "";
 
     var query = dbService.collection("users").where("userId", "==", userObj.uid).get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         //console.log(doc.data().profileImage);
        profileurl = doc.data().profileImage;
+       profileuser = doc.data().NickName;
       });
     });
 
@@ -53,6 +55,7 @@ function Post({userObj}) {
       title : title,
       image : url,
       creatorIcon : profileurl,
+      creatorId : profileuser,
     });
 
     setDateString("");

@@ -20,7 +20,7 @@ function Header({isLoggedIn}) {
             )}
 
             {isLoggedIn ? (
-              <Link to='/profile' style={{color:'black'}}><img src='/assets/author.jpg' className='profileImage'/></Link>
+              <Link to='/profile' style={{color:'black'}}><img src='/assets/defaultProfile.jpg' className='profileImage'/></Link>
             ) : (
               <Link to='/login' style={{color:'black'}}><FontAwesomeIcon icon={faUserPlus} className='header-faUserPlus'/></Link>
             )}
